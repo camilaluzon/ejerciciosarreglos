@@ -13,9 +13,9 @@ public class MainServicio {
         int cantidad;
         int opc;
         int posicion;
+        int puerto;
 
         String nombre;
-        int puerto;
 
         // Ingresar cantidad de servicios
         System.out.print("¿Cuántos servicios desea ingresar? ");
@@ -128,6 +128,7 @@ public class MainServicio {
             }
 
         } while (opc != 5);
+
         sc.close();
     }
 }

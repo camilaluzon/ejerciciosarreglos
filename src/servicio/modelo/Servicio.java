@@ -53,9 +53,7 @@ public class Servicio {
     }
 
     public void registrarPeticion() {
-        if (activo) {
-            cantidadPeticiones++;
-        }
+        cantidadPeticiones++;
     }
 
     public void mostrarServicio() {
