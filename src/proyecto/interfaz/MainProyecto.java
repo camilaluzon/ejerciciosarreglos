@@ -120,6 +120,6 @@ public class MainProyecto {
             }
 
         } while (opc != 5);
-
+        sc.close();
     }
 }
