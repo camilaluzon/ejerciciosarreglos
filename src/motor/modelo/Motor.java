@@ -13,7 +13,6 @@ public class Motor {
         encendido = false;
     }
 
-    // Getters
     public String getNombre() {
         return nombre;
     }
@@ -30,7 +29,6 @@ public class Motor {
         return encendido;
     }
 
-    // Setters
     public void setNombre(String nombre) {
         if (nombre != null && !nombre.trim().isEmpty()) {
             this.nombre = nombre;
@@ -49,7 +47,6 @@ public class Motor {
         }
     }
 
-    // Métodos
     public void encender() {
         encendido = true;
     }

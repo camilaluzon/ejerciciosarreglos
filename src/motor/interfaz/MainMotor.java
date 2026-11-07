@@ -10,17 +10,17 @@ public class MainMotor {
         final int MAX = 3;
         Motor motores[] = new Motor[MAX];
 
-        String nombre;
-        double potencia;
-        int velocidad;
         int opc;
+        int posicion;
+        int velocidad;
+        double potencia;
+        String nombre;
 
-        // Llenar todo el arreglo
+        // Llenar arreglo
         for (int i = 0; i < motores.length; i++) {
-
             System.out.println("\nMOTOR " + (i + 1));
 
-            System.out.print("Ingrese nombre: ");
+            System.out.print("Ingrese el nombre: ");
             nombre = sc.nextLine();
 
             while (nombre.trim().isEmpty()) {
@@ -28,7 +28,7 @@ public class MainMotor {
                 nombre = sc.nextLine();
             }
 
-            System.out.print("Ingrese potencia: ");
+            System.out.print("Ingrese la potencia: ");
             potencia = Double.parseDouble(sc.nextLine());
 
             while (potencia < 0) {
@@ -36,7 +36,7 @@ public class MainMotor {
                 potencia = Double.parseDouble(sc.nextLine());
             }
 
-            System.out.print("Ingrese velocidad: ");
+            System.out.print("Ingrese la velocidad (0-100): ");
             velocidad = Integer.parseInt(sc.nextLine());
 
             while (velocidad < 0 || velocidad > 100) {
@@ -47,40 +47,53 @@ public class MainMotor {
             motores[i] = new Motor(nombre, potencia, velocidad);
         }
 
-        // Menú
+        // Menú de opciones
         do {
-
             System.out.println("\n===== MENU MOTORES =====");
-            System.out.println("1. Mostrar todos los motores");
-            System.out.println("2. Encender todos los motores");
-            System.out.println("3. Apagar todos los motores");
+            System.out.println("1. Mostrar motor");
+            System.out.println("2. Encender motor");
+            System.out.println("3. Apagar motor");
             System.out.println("4. Salir");
-
             System.out.print("Seleccione una opción: ");
             opc = Integer.parseInt(sc.nextLine());
 
             if (opc == 1) {
+                System.out.print("Ingrese la posición del motor (1-" + motores.length + "): ");
+                posicion = Integer.parseInt(sc.nextLine());
 
-                for (int i = 0; i < motores.length; i++) {
-                    System.out.println("\nMOTOR " + (i + 1));
-                    motores[i].mostrarMotor();
+                while (posicion < 1 || posicion > motores.length) {
+                    System.out.print("Posición no válida. Ingrese nuevamente: ");
+                    posicion = Integer.parseInt(sc.nextLine());
                 }
+
+                posicion--;
+                motores[posicion].mostrarMotor();
 
             } else if (opc == 2) {
+                System.out.print("Ingrese la posición del motor (1-" + motores.length + "): ");
+                posicion = Integer.parseInt(sc.nextLine());
 
-                for (int i = 0; i < motores.length; i++) {
-                    motores[i].encender();
+                while (posicion < 1 || posicion > motores.length) {
+                    System.out.print("Posición no válida. Ingrese nuevamente: ");
+                    posicion = Integer.parseInt(sc.nextLine());
                 }
 
-                System.out.println("Todos los motores fueron encendidos.");
+                posicion--;
+                motores[posicion].encender();
+                System.out.println("Motor encendido correctamente.");
 
             } else if (opc == 3) {
+                System.out.print("Ingrese la posición del motor (1-" + motores.length + "): ");
+                posicion = Integer.parseInt(sc.nextLine());
 
-                for (int i = 0; i < motores.length; i++) {
-                    motores[i].apagar();
+                while (posicion < 1 || posicion > motores.length) {
+                    System.out.print("Posición no válida. Ingrese nuevamente: ");
+                    posicion = Integer.parseInt(sc.nextLine());
                 }
 
-                System.out.println("Todos los motores fueron apagados.");
+                posicion--;
+                motores[posicion].apagar();
+                System.out.println("Motor apagado correctamente.");
             }
 
         } while (opc != 4);
